@@ -1,0 +1,89 @@
+﻿@model ChefViewModel
+
+@{
+    ViewData["title"] = "Edit-Recipe";
+}
+
+<h2>Edit Recipe</h2>
+
+<form method="post" asp-action="EditRecipe" asp-controller="Chef" enctype="multipart/form-data">
+    <div class="text-danger" asp-validation-summary="All"></div>
+    <input type="hidden" asp-for="@Model.ActiveChefRecipe.ChefId" />
+    <input type="hidden" asp-for="@Model.ActiveChefRecipe.ChefRecipesId" />
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label asp-for="@Model.ActiveChefRecipe.RecipeName">Recipe Name:</label>
+                <input asp-for="@Model.ActiveChefRecipe.RecipeName" class="form-control" />
+                <span asp-validation-for="@Model.ActiveChefRecipe.RecipeName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.ActiveChefRecipe.RecipeDescription">Recipe Description:</label>
+                <input asp-for="@Model.ActiveChefRecipe.RecipeDescription" class="form-control" />
+                <span asp-validation-for="@Model.ActiveChefRecipe.RecipeDescription" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.ActiveChefRecipe.CuisineId">Recipe Cuisine:</label>
+                <select class="form-select" asp-for="@Model.ActiveChefRecipe.CuisineId">
+                    @foreach (var cuisine in Model.allCuisines)
+                    {
+                        <option value="@cuisine.CuisinesId">
+                            @cuisine.CuisineName
+                        </option>
+                    }
+                </select>
+                <span asp-validation-for="@Model.ActiveChefRecipe.RecipeDescription" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.ActiveChefRecipe.NumberOfPeople">Number of People:</label>
+                <input asp-for="@Model.ActiveChefRecipe.NumberOfPeople" class="form-control" />
+                <span asp-validation-for="@Model.ActiveChefRecipe.NumberOfPeople" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.ActiveChefRecipe.Price">Price:</label>
+                <input asp-for="@Model.ActiveChefRecipe.Price" class="form-control" />
+                <span asp-validation-for="@Model.ActiveChefRecipe.Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.ActiveChefRecipe.PricePerExtraPerson">Price per Extra Person:</label>
+                <input asp-for="@Model.ActiveChefRecipe.PricePerExtraPerson" class="form-control" />
+                <span asp-validation-for="@Model.ActiveChefRecipe.PricePerExtraPerson" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+                <div class="col-md-5">
+                    <a class="btn btn-danger" asp-controller="chef" asp-action="GetRecipeDetailsPage" asp-route-id="@Model.ActiveChefRecipe.ChefRecipesId" asp-route-username="@Model.ActiveUser.UserName">Cancel</a>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label asp-for="@Model.ActiveChefRecipe.RecipeImage" style="width: 100%;">Upload Recipe Image:</label>
+
+                <img id="recipeImage" style="width:350px;height:350px; object-fit:cover" src="data:image/*;base64,@(Convert.ToBase64String(Model.ActiveChefRecipe.RecipeImage))">
+                <input type="hidden" asp-for="@Model.ActiveChefRecipe.RecipeImage" />
+                <input type="file"
+                       asp-for="@Model.ActiveChefRecipe.RecipeImage"
+                       accept=".png,.jpg,.jpeg,.gif,.tif"
+                       class="form-control"
+                       style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
+                       onchange="document.getElementById('recipeImage').src = window.URL.createObjectURL(this.files[0])" />
+                <span asp-validation-for="@Model.ActiveChefRecipe.RecipeImage" class="text-danger"></span>
+
+            </div>
+
+        </div>
+    </div>
+</form>

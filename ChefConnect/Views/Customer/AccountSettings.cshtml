@@ -1,0 +1,52 @@
+﻿@model CustomerViewModel
+@{
+    ViewData["title"] = "Account Settings";
+
+}
+
+
+
+<div class="container form-body">
+    <div class="row form-container">
+        <div>
+            <h2 class="form-h2">Account Settings</h2>
+            <form asp-controller="Customer" asp-action="EditCustomerAccountDetails" method="post">
+                <div class="text-danger" asp-validation-summary="ModelOnly">   </div>
+                <div class="form-group">
+                    <label asp-for="ActiveUser.Name"></label>
+                    <input asp-for="ActiveUser.Name" class="form-control" />
+                    <span asp-validation-for="ActiveUser.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ActiveUser.UserName"></label>
+                    <input asp-for="ActiveUser.UserName" class="form-control" />
+                    <span asp-validation-for="ActiveUser.UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ActiveUser.Email"></label>
+                    <input asp-for="ActiveUser.Email" class="form-control" />
+                    <span asp-validation-for="ActiveUser.Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ActiveUser.PhoneNumber"></label>
+                    <input asp-for="ActiveUser.PhoneNumber" class="form-control" />
+                    <span asp-validation-for="ActiveUser.PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary btn-account-form">Save</button>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="btn btn-danger btn-account-form-cancel" asp-controller="Customer" asp-action="GetCustomerHome" asp-route-username="@Model.ActiveUser.UserName">Cancel</a>
+                    </div>
+                </div>
+                
+            </form>
+
+
+        </div>
+    </div>
+</div>
+

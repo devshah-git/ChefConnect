@@ -1,0 +1,94 @@
+﻿@model CustomerViewModel
+@{
+    ViewData["title"] = "Manage Payments Page";
+}
+<style>
+    /* Buttons styling */
+.btn-primary {
+    background-color: #007bff; /* Primary blue */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Padding for larger click area */
+    margin: 10px 0; /* Margin for spacing around buttons */
+    border-radius: 5px; /* Rounded corners for a modern look */
+    color: #fff; /* White text */
+    text-decoration: none; /* Remove underline from links */
+    display: inline-block;
+    width:100%;/* Align buttons side by side */
+}
+
+
+
+/* Card styling */
+.card-home {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin: 20px 0; /* Margin for spacing between cards */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensures content fits within the corners */
+    background-color: #fff; /* White background */
+}
+
+.card-body {
+    padding: 15px; /* Padding inside card */
+}
+
+.card-title {
+    margin-bottom: 15px; /* Spacing below the title */
+    color: #333; /* Dark grey color for text */
+    font-size: 18px; /* Slightly larger font size */
+}
+
+.card-text {
+    color: #666; /* Lighter grey for text */
+    line-height: 1.5; /* Improved line spacing */
+    margin-bottom: 10px; /* Spacing between text */
+}
+
+/* Styling for no payment methods available message */
+.no-payment-methods {
+    text-align: center; /* Center the text */
+    color: #333; /* Dark grey color */
+    margin-top: 20px; /* Margin on top for spacing */
+    font-size: 20px; /* Slightly larger font size for emphasis */
+}
+
+</style>
+<div class="row">
+    <div class="col-md-3">
+        <a asp-controller="Customer" asp-action="GetAddPaymentMethodPage" asp-route-username="@Model.ActiveUser.UserName" asp-route-returnurl="managepayment" class="btn btn-primary">Add a new Payment Method</a>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-primary" asp-controller="Customer" asp-action="GetCustomerHome" asp-route-username="@Model.ActiveUser.UserName">Go Back</a>
+    </div>
+</div>
+
+
+@if (Model.PaymentMethodsList.Count <= 0)
+{
+    <div>
+        <h2>
+            No Payment Methods Available
+        </h2>
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var pay in Model.PaymentMethodsList)
+        {
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <!-- Card -->
+                <div class="card-home">
+                    <!-- Card image -->
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <h5 class="card-title">Name on Card: @pay.NameOnCard</h5>
+                        <p class="card-text">Payment Type: @pay.PaymentType</p>
+                        <p class="card-text">Card Number: @pay.CardNumber</p>
+                        <p class="card-text">Card Expiry: @pay.CardExpiry.ToString("MM/yy")</p>
+                        <p class="card-text">CVV: @pay.CardCvv</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

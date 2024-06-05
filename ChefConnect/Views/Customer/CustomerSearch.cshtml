@@ -1,0 +1,150 @@
+﻿@model CustomerViewModel
+@{
+    ViewData["title"] = "Search";
+    int itemPerSlide = 3;
+    int totalItems = Model.AllRecipes.Count();
+    int slideCount = (int)Math.Ceiling(totalItems / (double)itemPerSlide);
+}
+<style>
+    /* Search Form Styling */
+    .form-search {
+        margin: 20px auto;
+        text-align: center;
+        font: bold 13px sans-serif;
+        max-width: 70%;
+        position: relative;
+    }
+
+        .form-search input, .form-search button {
+            height: 40px; /* Ensure consistent height */
+        }
+
+        .form-search input {
+            width: 60%;
+            box-sizing: border-box;
+            border-radius: 2px 0 0 2px; /* Simplified */
+            background-color: #ffffff;
+            box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.08);
+            padding: 0 15px 0 40px;
+            border: 1px solid #b6c3cd;
+            border-right: 0;
+            color: #4E565C;
+            outline: none;
+        }
+
+        .form-search button {
+            border-radius: 0 2px 2px 0; /* Simplified */
+            background-color: #6caee0;
+            box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.08);
+            color: #ffffff;
+            padding: 0 22px; /* Adjusted padding */
+            margin-left: -4px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+    /* Cuisine List Styling */
+    .cuisine-row {
+        margin-top: 30px; /* Add space above the cuisine list */
+        justify-content: center; /* Center the cuisines horizontally */
+    }
+
+    .cuisine-item {
+        margin: 10px; /* Existing margin */
+        width: 15%; /* Existing width */
+        border: 2px solid #6caee0; /* Solid border with a light blue color */
+        border-radius: 10px; /* Rounded corners for a modern look */
+        transition: transform 0.3s ease, border-color 0.3s ease; /* Smooth transition for hover effects */
+    }
+
+        .cuisine-item:hover {
+            transform: scale(1.05); /* Slightly enlarge item on hover */
+            border-color: #3498db; /* Change border color on hover for visual feedback */
+        }
+
+
+    .cuisine-link {
+        display: block; /* Make the anchor fill the container */
+        text-align: center; /* Center text within the button */
+        padding: 5px 20px; /* Increase padding for better appearance */
+    }
+
+</style>
+
+<form class="form-search" method="post" asp-controller="Customer" asp-action="GetSearchedRecipe">
+    <input type="search" name="search" placeholder="search for dishes here...." required>
+    <button type="submit">Search</button>
+
+</form>
+
+<div class="row cuisine-row">
+    @foreach (var cuisine in Model.CuisinesList)
+    {
+        <div class="col-md-1 cuisine-item">
+            <a asp-controller="Customer" asp-action="GetRecipesFromCuisine" asp-route-name="@cuisine.CuisineName" class="btn btn-light  cuisine-link">@cuisine.CuisineName</a>
+        </div>
+    }
+</div>
+
+<div class="row">
+    @if (Model.AllRecipes.Count == 0)
+    {
+        <h1>No Receipes Available</h1>
+    }
+    else
+    {
+        <h1 style="text-align:left">Recipes to select from:</h1>
+
+        <div id="recipeCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                @for (int slideIndex = 0; slideIndex < slideCount; slideIndex++)
+                {
+                    <div class="carousel-item @(slideIndex == 0 ? "active" : "")">
+                        <div class="row">
+                            @foreach (var recipe in Model.AllRecipes.Skip(slideIndex * itemPerSlide).Take(itemPerSlide))
+                            {
+                                <div class="col-md-4">
+                                    <!-- Card -->
+                                    <div class="card-home">
+                                        <!-- Card image -->
+                                        <img style="width:350px;height:350px; object-fit:cover" src="data:image/*;base64,@(Convert.ToBase64String(recipe.RecipeImage))" class="card-img-top" alt="@recipe.RecipeName">
+                                        <!-- Card body -->
+                                        <div class="card-body">
+                                            <h5 class="card-title">Name: @recipe.RecipeName</h5>
+                                            <p class="card-text">Chef: @recipe.Chef.Name </p>
+                                            <p class="card-text">Cuisine Type: @recipe.RecipeCuisine.CuisineName</p>
+                                            <p class="card-text">Description: @recipe.RecipeDescription</p>
+                                            <p class="card-text">Price: $@recipe.Price</p>
+                                            <p class="card-text">
+                                                Number of Included Persons: @recipe.NumberOfPeople
+                                            </p>
+                                            <p class="card-text">
+                                                Price per extra Person: $@recipe.PricePerExtraPerson
+                                            </p>
+
+
+                                            <a asp-controller="Customer" asp-action="GetReviewsPage" asp-route-id="@recipe.ChefRecipesId" asp-route-username="@Model.ActiveUser.UserName" class="btn button-cart btn-primary">Add Review</a>
+                                            
+                                            <a asp-controller="Customer" asp-action="AddRecipeToCart" asp-route-id="@recipe.ChefRecipesId" asp-route-username="@Model.ActiveUser.UserName" class="btn button-cart add-to-cart btn-primary">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+            <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                <span aria-hidden="true">&#10094;</span> <!-- Using Unicode arrow character -->
+
+            </a>
+            <a class="carousel-control-next" href="#recipeCarousel" role="button" data-bs-slide="next">
+                <span aria-hidden="true">&#10095;</span> <!-- Using Unicode arrow character -->
+
+            </a>
+        </div>
+
+    }
+
+</div>

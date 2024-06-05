@@ -1,0 +1,145 @@
+﻿@model CustomerViewModel
+
+@{
+    ViewData["title"] = "Secure Checkout Page";
+    var subtotal = Model.cartList.Sum(x => x.RecipeTotal);
+    var tax = (Model.cartList.Sum(x => x.RecipeTotal) * 0.13);
+    var charges = (Model.cartList.Sum(x => x.RecipeTotal) * 0.02);
+    var total = subtotal + tax + charges;
+}
+<style>
+.error-message {
+        color: red;
+        font-size: 0.8em;
+}
+.cart-header-customer-checkout h2 {
+        
+        text-align: center;
+        margin-bottom: 20px;
+}
+
+    /* Row and Card Container */
+
+
+    /* Button Style */
+    
+</style>
+<form asp-controller="Customer" asp-action="SecureCheckout" method="post" class="customer-checkout-form">
+    <div class="row">
+        <div class="col-md-8">
+            <section>
+                <div class="cart-header">
+                    <h2>Order Instructions</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <textarea name="orderinstructions" id="orderinstructions" class="form-control" rows="4" cols="50"></textarea>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="cart-header">
+                    <h2>Address</h2>
+                </div>
+                <div class="row">
+                    
+                        <a asp-controller="Customer" asp-action="GetCustomerAddressPage" asp-route-username="@Model.ActiveUser.UserName" asp-route-returnurl="checkoutpage" class="btn button-cart add-to-cart btn-primary">Add A new Address</a>
+                   
+                       <h5>Please select an address from below:</h5>
+                        @foreach (var address in Model.addressList)
+                        {
+
+                            <div class="col-md-6">
+                                <!-- Card -->
+                                <div class="card-address-home" onclick="selectAddressCard(this)">
+                                    <!-- Card image -->
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="form-group" id="addressCard">
+                                            <label for="selectAddress">
+                                                <input type="radio" name="selectAddress" value="@address.AddressesId" id="@address.AddressesId" class="card-radio" />
+                                                <h5 class="card-title">Name: @address.Name</h5>
+                                                <p class="card-text">Apt Number: @address.AptNumber </p>
+                                                <p class="card-text">Street Address: @address.StreetAddress</p>
+                                                <p class="card-text">City: @address.City</p>
+                                                <p class="card-text">Province: @address.Province</p>
+                                                <p class="card-text">
+                                                    Postal Code: @address.PostalCode
+                                                </p>
+                                                <p class="card-text">
+                                                    Country: @address.Country
+                                                </p>
+                                                <p class="card-text">
+                                                    Phone Number: @address.PhoneNumber
+                                                </p>
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    
+
+                </div>
+            </section>
+            <section>
+                <div class="cart-header">
+                    <h2>Payment</h2>
+                </div>
+                <div class="row">
+                    
+                        <a asp-controller="Customer" asp-action="GetAddPaymentMethodPage" asp-route-username="@Model.ActiveUser.UserName" asp-route-returnurl="checkoutpage" class="btn button-cart add-to-cart btn-primary">Add a new Payment Method</a>
+
+                    
+                        <h5>Please select a payment method from below:</h5>
+                        @foreach (var pay in Model.PaymentMethodsList)
+                        {
+
+                            <div class="col-md-6">
+                                <!-- Card -->
+                                <div class="card-payment-home" onclick="selectPaymentCard(this)">
+                                    <!-- Card image -->
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="form-group" id="paymentCard">
+                                            <label for="selectPayment">
+                                                <input type="radio" name="selectPayment" value="@pay.PaymentMethodsId" id="@pay.PaymentMethodsId" class="card-radio" />
+                                                <h5 class="card-title">Name on Card: @pay.NameOnCard</h5>
+                                                <p class="card-text">Payment Type: @pay.PaymentType </p>
+                                                <p class="card-text">Card Number: @pay.CardNumber</p>
+                                                <p class="card-text">Card Expiry: @pay.CardExpiry.ToString("MM/yy")</p>
+                                                <p class="card-text">CVV: @pay.CardCvv</p>
+
+
+
+
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    
+                </div>
+            </section>
+        </div>
+        <div class="col-md-3 checkout-summary">
+            <h1>Order Summary</h1>
+              <div class="card">
+                  <div class="card-body">
+                      <div class="row">
+                          <label>Subtotal <span name="subtotal" class="">$@subtotal</span></label>
+                          <label>Tax(13%) <span name="tax" class=""></span>$@tax</label>
+                          <label>Charges(2% of Subtotal) <span name="charges" class="">$@charges</span></label>
+                          <label style="border-top:1px solid black">Total <span name="total" class="">$@total</span></label>
+                          <button type="submit" class="btn btn-primary btn-place-order">Place Order</button>
+                          <a class="btn btn-primary btn-go-to-cart" asp-controller="Customer" asp-action="GetCustomerCart" asp-route-username="@Model.ActiveUser.UserName">Go to Cart</a>
+                      </div>
+                  </div>
+              </div>  
+        </div>
+    </div>
+</form>
+

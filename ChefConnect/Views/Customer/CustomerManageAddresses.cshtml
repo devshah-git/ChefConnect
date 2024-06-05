@@ -1,0 +1,88 @@
+﻿@model CustomerViewModel
+@{
+    ViewData["title"] = "Manage Addresses";
+
+}
+<style>
+    /* Card styling */
+    .card-home {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        margin: 20px 0; /* Margin for spacing between cards */
+        border-radius: 8px; /* Rounded corners */
+        overflow: hidden; /* Ensures content fits within the corners */
+        background-color: #fff; /* White background */
+    }
+
+    .card-body {
+        padding: 15px; /* Padding inside card */
+    }
+
+    .card-title {
+        margin-bottom: 15px; /* Spacing below the title */
+        color: #333; /* Dark grey color for text */
+        font-size: 18px; /* Slightly larger font size */
+    }
+
+    .card-text {
+        color: #666; /* Lighter grey for text */
+        line-height: 1.5; /* Improved line spacing */
+        margin-bottom: 10px; /* Spacing between text */
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-2">
+        <a asp-controller="Customer" asp-action="GetCustomerAddressPage" asp-route-username="@Model.ActiveUser.UserName" asp-route-returnurl="manageaddress" class="btn btn-primary">Add A new Address</a>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-primary" asp-controller="Customer" asp-action="GetCustomerHome" asp-route-username="@Model.ActiveUser.UserName">Go Back</a>
+    </div>
+ </div>   
+
+
+    @if (Model.addressList.Count <= 0)
+    {
+        <div>
+            <h2>
+                No Address Available
+            </h2>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+        @foreach (var address in Model.addressList)
+        {
+
+            <div class="col-md-4">
+                <!-- Card -->
+                <div class="card-home">
+                    <!-- Card image -->
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <h5 class="card-title">Name: @address.Name</h5>
+                        <p class="card-text">Apt Number: @address.AptNumber </p>
+                        <p class="card-text">Street Address: @address.StreetAddress</p>
+                        <p class="card-text">City: @address.City</p>
+                        <p class="card-text">Province: @address.Province</p>
+                        <p class="card-text">
+                            Postal Code: @address.PostalCode
+                        </p>
+                        <p class="card-text">
+                            Country: @address.Country
+                        </p>
+                        <p class="card-text">
+                            Phone Number: @address.PhoneNumber
+                        </p>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+
+    }
+

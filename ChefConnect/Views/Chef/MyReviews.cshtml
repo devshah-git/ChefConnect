@@ -1,0 +1,58 @@
+﻿@model ChefViewModel
+
+@{
+    ViewData["title"] = "My-Reviews";
+}
+
+<h2>Your Reviews</h2>
+
+@if (Model.ChefReviews.Count == 0)
+{
+    <h4>No Reviews Found.</h4>
+}
+else
+{
+    <table class="table table-striped-columns">
+
+        <thead>
+            <tr>
+                <th>Review Description</th>
+                <th>Ratings</th>
+                <th>Customer</th>
+                <th>Order Dish</th>
+                <th>Review Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var review in Model.ChefReviews)
+            {
+                <tr>
+                    <td>
+                        @review.ReviewDescription
+                    </td>
+                    <td>
+                        @review.Ratings
+                    </td>
+                    <td>
+                        @review.Customer.Name
+                    </td>
+                    <td>
+                        @review.ChefRecipe.RecipeName
+                    </td>
+                    <td>
+                       @review.ReviewDate?.ToString("dd-MM-yyyy")
+                    </td>
+                    <td>
+                        <a asp-controller="Chef" asp-action="GetReportedReviews" asp-route-id="@review.ReviewsId">Report</a>
+                    </td>
+
+                </tr>
+
+            }
+
+        </tbody>
+
+    </table>
+}

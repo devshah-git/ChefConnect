@@ -1,0 +1,121 @@
+﻿@{
+    ViewData["Title"] = "Chef Connect";
+}
+
+<div class="text-center">
+    <h1 class="display-2 animated-header" style="font-family: Tahoma;padding-bottom:50px;">Welcome to Chef Connect</h1>
+
+    <!-- Example of adding an image with the provided source -->
+    <div id="imageCarousel" class="carousel slide animated-carousel" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/images/chef-image-stock.png" class="d-block" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+                <img src="~/images/chef-stock-image2.png" class="d-block" alt="Slide 2">
+            </div>
+
+        </div>
+        
+    </div>
+
+</div>
+<div class="animated-home-page-content">
+    <section id="" class="row home-page-content pt-5">
+        <a asp-controller="Home" asp-action="Highlights" class="text-corrections">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Added an ID to the img tag for easy JavaScript targeting -->
+                    <img id="highligh-image" src="~/images/foodImages/palak paneer.jpg" class="highlightedImage d-block w-100 highlists-image image-hover-effect" alt="Chef-Image">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-center h2 pop-heading">Highlights of the Week.</h2>
+                    <ol class="text-center highlights-list">
+                        <li>Palak Paneer</li>
+                        <li>Chole Bhature</li>
+                        <li>Vada Pav</li>
+                        <li>Dabeli</li>
+                        <li>Fried Chicken</li>
+
+                    </ol>
+                </div>
+            </div>
+        </a>
+    </section>
+
+
+   
+    <section id="content2" class="row home-page-content pt-5">
+        <a asp-controller="Home" asp-action="About" class="text-corrections">
+            <div class="row">
+                <div class="col-md-6 ">
+                    <h2 class="text-center h2 pop-heading">
+                        Company Moto:
+
+
+                    </h2>
+                    <ul class="company-moto-list text-center">
+                        <li>Connecting Chefs and Customers</li>
+                        <li>
+                            "Savor the Extraordinary – Wherever You Are."
+                        </li>
+                        <li>
+                            "The Luxury of Fine Dining, the Comfort of Home."
+                        </li>
+                        <li>
+                            "Elevate Your Home with Chef-Crafted Delights."
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <img src="~/images/sample-stock.jpg" class="highlightedImage d-block w-100 highlists-image image-hover-effect" alt="Slide 1">
+                </div>
+            </div>
+        </a>
+    </section>
+    <section id="content3" class="row home-page-content pt-5">
+        <a asp-controller="Home" asp-action="About" class="text-corrections">
+            <div class="row">
+                <div class="col-md-6 highlists-image">
+                    <img src="~/images/dishies-image-stock.jpg" class="highlightedImage d-block w-100 highlists-image image-hover-effect" alt="Slide 1">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-center h2 pop-heading">
+                        About Developers:
+                    </h2>
+                    <ol class="dev-list text-center">
+                        <li>
+                            Kandarp Rushikesh Patel
+                        </li>
+                        <li>
+                            Ayush Chakrani
+                        </li>
+                        <li>
+                            Dev Manishkumar Shah
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </a>
+
+    </section>
+    <section id="content4" class="row home-page-content pt-5">
+        <a asp-controller="Home" asp-action="About" class="text-corrections highlists-image">
+            <div class="row">
+                <div class="col-md-6 ">
+                    <h2 class="text-center h2 pop-heading">
+                        About App:
+
+                    </h2>
+                    <p style="padding:5px;" class="highlights-list">
+                        Chef Connect is a web application that connects chefs and customers. It is a platform where chefs can showcase their culinary skills and customers can book a chef to cook for them. The application is designed to provide a seamless experience for both chefs and customers. Chefs can create a profile, upload their recipes, and manage their bookings. Customers can browse through the chef profiles, view their recipes, and book a chef for a private dining experience. Chef Connect aims to bring the luxury of fine dining to the comfort of home.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <img src="~/images/logo.png" class="highlightedImage d-block w-100 highlists-image image-hover-effect" alt="Slide 1">
+                </div>
+            </div>
+        </a>
+    </section>
+
+</div>

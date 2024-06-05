@@ -1,0 +1,114 @@
+﻿@model AddressViewModel
+
+@{
+    ViewData["title"] = "Address Page";
+}
+
+    <div class="address-header">
+        <h2>Customer Address</h2>
+    </div>
+    <div class="address-container">
+
+        <div class="address-items pb-3">
+
+            <div class="address-item">
+
+                <div class="row">
+
+                    <form asp-controller="Customer" asp-action="AddCustomerAddress" method="post">
+                        <input type="hidden" asp-for="@Model.ReturnUrl" value="@TempData["returnurl"]" />
+                        <div class="form-row">
+                        <div class="form-group">
+                            <label asp-for="@Model.Name">Name:</label>
+                            <input type="text" asp-for="@Model.Name" value="@Model.Name" />
+                            <span asp-validation-for="@Model.Name"
+                                  class="text-danger"></span>
+                            <br />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.AptNumber">Apt/Suite Number</label>
+                            <input type="text" asp-for="@Model.AptNumber" />
+                            <span asp-validation-for="@Model.AptNumber"
+                                  class="text-danger"></span>
+                            <br />
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.StreetAddress">Street Address</label>
+                            <input type="text" asp-for="@Model.StreetAddress" />
+                            <span asp-validation-for="@Model.StreetAddress"
+                                  class="text-danger"></span>
+                            <br />
+                        </div>
+                        <div class="form-row">
+                        <div class="form-group">
+                            <label asp-for="@Model.City">City</label>
+                            <input type="text" asp-for="@Model.City" />
+                            <span asp-validation-for="@Model.City"
+                                  class="text-danger"></span>
+                            <br />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.Province">Province</label>
+                            <select name="province" id="province" asp-for="@Model.Province">
+                                <option value="Ontario">Ontario</option>
+                            </select>
+                            @*<input type="text" asp-for="@Model.Province" />*@
+                            <span asp-validation-for="@Model.Province"
+                                  class="text-danger"></span>
+                            <br />
+                        </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label asp-for="@Model.Country">Country</label>
+                                <select name="country" id="country" asp-for="@Model.Country">
+                                    <option value="Canada">Canada</option>
+                                </select>
+                                @*<input type="text" asp-for="@Model.Country" />*@
+                                <span asp-validation-for="@Model.Country"
+                                      class="text-danger"></span>
+                                <br />
+                            </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.PostalCode">PostalCode</label>
+                            <input type="text" asp-for="@Model.PostalCode" />
+                            <span asp-validation-for="@Model.PostalCode"
+                                  class="text-danger"></span>
+                            <br />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.PhoneNumber">Phone Number</label>
+                            <input type="text" asp-for="@Model.PhoneNumber" />
+                            <span asp-validation-for="@Model.PhoneNumber"
+                                  class="text-danger"></span>
+                            <br />
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <button type="submit" class="btn btn-primary">Save Address</button>
+                                </div>
+                                
+                                @if (Model.ReturnUrl == "manageaddress")
+                                {
+                                    <div class="col-md-3">
+                                        <a class="btn btn-danger" asp-controller="Customer" asp-action="GetAllAddresses" asp-route-username="@Model.Username">Cancel</a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-3">
+                                        <a class="btn btn-danger" asp-controller="Customer" asp-action="GetSecureCheckoutPage" asp-route-username="@Model.Username">Cancel</a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>

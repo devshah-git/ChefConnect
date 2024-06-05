@@ -1,0 +1,1489 @@
+﻿
+/*html code change*/
+html {
+    font-size: 14px;
+}
+
+/*Media query for the Html page*/
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Layout CSS*/
+/* Gives the recipe list a different CSS*/
+/* animation targeting the list of recipes on home page*/
+.highlights-list li {
+    opacity: 0;
+    transform: translateX(-100px);
+    animation: fadeInUp 2s ease forwards;
+}
+.highlights-list {
+    list-style-type: none;
+    padding-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2em;
+    font-weight: lighter;
+    margin: 0;
+}
+
+/* Gives unique designing to Company Moto on homepage*/
+.company-moto-list {
+    list-style-type: none;
+    padding-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2em;
+    font-weight: lighter;
+    margin: 0;
+}
+
+/* CSS for developers info on homepage*/
+.dev-list {
+    list-style-type: none;
+    padding-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2em;
+    font-weight: lighter;
+    margin: 0;
+}
+
+.dev-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.dev-list li {
+    opacity: 0;
+    transform: translateX(-100px);
+    animation: slideIn 0.5s forwards;
+    animation-delay: var(--animation-delay, 0s);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+    .dev-list li:hover {
+        background-blend-mode: color-burn;
+        background: linear-gradient(to right,#4C5760,#93A8AC,#D7CEB2,#A59E8C,#66635B);
+        border-radius: 10px;
+        /*background: linear-gradient(45deg, #ee7724, #d8363a, #dd3675, #b44593);*/
+        color: #ffffff;
+    }
+
+
+/* Body CSS*/
+body {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    top: 95px;
+    position: relative;
+    background-color: #FCFBF4;
+    /*background-image: url();
+    background: url("../images/blob-scene-haikei-opacity.png") no-repeat center center fixed;*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: diagonalMove 20s infinite linear;
+}
+
+.home-page-content {
+    margin: 10px 15px 10px 15px;
+}
+
+.text-corrections {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.gradient-custom-2 {
+    background: #FF753A;
+    font-size: 1.5em;
+    box-shadow: 0 18px 10px -5px rgba(0,0,0,0.2);
+    /*background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);*/
+
+}
+
+.gradient-custom-2 a:hover {
+    background: #FF753A;
+    padding:10px;
+    /*background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);*/
+}
+
+
+/* Animation for the header*/
+.animated-header {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideIn 5s forwards;
+}
+
+/* Animation for the carousel on Home page*/
+.animated-carousel {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideIn 5s forwards;
+    width: 100%;
+}
+
+/* Animation for the homepage*/
+.animated-home-page-content {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideIn 5s forwards;
+}
+
+
+
+
+/* For the Customer and chef Account Settings Page Form*/
+.form-body {
+    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     /* Full height to center the form vertically */
+}
+
+.form-container {
+    width: 100%; /* Full width on smaller screens */
+    max-width: 500px; /* Max-width for larger screens */
+    background-color: #fff;
+    padding: 20px;
+    margin: auto;
+    border-radius: 8px;
+    /* Updated box shadow for a subtle but more pronounced effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08), 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.form-h2 {
+    text-align: center; /* Center align the heading */
+    color: #333;
+    margin: 0 0 20px 0; /* Adjusted margin for spacing */
+}
+input[type="text"], input[type="email"], input[type="tel"] {
+    width: calc(100% - 22px); /* Full width accounting for padding and borders */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+    input:: placeholder {
+    color: #aaa;
+}
+
+.btn-account-form {
+    width: 100%; /* Full width */
+    padding: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: center; /* Center the text */
+}
+.btn-account-form-cancel {
+    width: 100%; /* Full width */
+    padding: 10px;
+    background-color: #5cb85c!s;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: center;
+}
+.btn-account-form:hover {
+    background-color: #4cae4c; /* A slightly darker green for hover */
+}
+
+/*------------------*/
+/* To make the carousel visible*/
+.carousel-visible {
+    opacity: 1;
+}
+
+/* Highlighting the images on the homepage*/
+.highlists-image {
+    opacity: 0;
+    transform: translateX(100%);
+    animation: slideInFromRight 1.5s ease forwards;
+}
+
+.highlights-list li:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: #007bff; 
+}
+
+
+/* Bootstrap heading and hover effects*/
+.pop-heading {
+    display: block;
+    animation: popIn 6s ease forwards;
+}
+
+    .pop-heading:hover {
+        color: red;
+        transform: scale(1.05);
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+.pop-heading, .highlights-list li {
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: block;
+}
+
+.d-block.w-100.highlists-image.image-hover-effect {
+    transition: transform 1s ease !important;
+}
+
+    .d-block.w-100.highlists-image.image-hover-effect:hover {
+        transform: scale(1.05) !important;
+    }
+/*To target the Customer Home CSS*/
+.row h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2em;
+}
+
+.card-home {
+    width: 350px;
+    margin: 1rem;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 3px solid #f0f0f0;
+    Initial color for border animation animation: pulseShadow 1.5s infinite alternate, borderColorAnimation 3s infinite alternate;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+    padding: 15px;
+}
+
+    .card-content h5 {
+        margin-top: 0;
+        color: #333;
+    }
+
+    .card-content p {
+        color: #666;
+        line-height: 1.6;
+        font-size: 0.9em;
+    }
+
+.button-cart {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .button-cart:hover {
+        background: #0056b3;
+    }
+
+    .button-cart:active {
+        transform: translateY(2px);
+    }
+
+    .button-cart.book {
+        background: #28a745;
+    }
+
+        .button-cart.book:hover {
+            background: #218838;
+        }
+
+    .button-cart.add-to-cart {
+        background: #ffc107;
+    }
+
+        .button-cart.add-to-cart:hover {
+            background: #e0a800;
+        }
+/*-----------------------------*/
+
+
+/* Previous and Next buttons CSS*/
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%; /* Align the middle of the button with the middle of the image */
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px; /* Width of the button */
+    height: 48px; /* Height of the button */
+    padding: 0;
+    transform: translateY(-50%); /* Center vertically */
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    color: #333; /* Button text color */
+    border: none;
+    border-radius: 50%; /* Circular button */
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+
+/*Card Body CSS*/
+.selected-card {
+    border-color: #ffd700; /* Gold border for selected card */
+    background-color: #fff8dc; /* Light golden background for selected card */
+    /* Add any other styles for the selected card */
+}
+
+
+
+
+
+
+    /* Style adjustments for the icon or text inside the button */
+    .carousel-control-prev span,
+    .carousel-control-next span {
+        font-size: 24px; /* Icon size */
+    }
+
+    /* Hover and focus styles for the buttons */
+    .carousel-control-prev:hover,
+    .carousel-control-prev:focus,
+    .carousel-control-next:hover,
+    .carousel-control-next:focus {
+        background-color: rgba(255, 255, 255, 0.9); /* Slightly darker on hover/focus */
+        outline: none;
+    }
+
+/* Position the 'Previous' button on the left */
+.carousel-control-prev {
+    left: -24px; /* Half the width of the button to fully expose it */
+}
+
+/* Position the 'Next' button on the right */
+.carousel-control-next {
+    right: -24px; /* Half the width of the button to fully expose it */
+}
+
+
+/* Login and Register button on Homepage*/
+.carousel-control-prev:hover {
+    background: black;
+    letter-spacing: 2px;
+}
+.carousel-control-next:hover {
+    background: black;
+    letter-spacing: 2px;
+}
+
+.carousel-control-next:visited {
+    background: black;
+}
+.carousel-control-prev:visited {
+    background: black;
+}
+
+
+.button::before, .button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 3rem;
+    transform: scaleX(0);
+    width: 100%;
+    height: 0.5px;
+    background: black;
+    color: black !important;
+    transition: all 0.3s;
+}
+
+.button:checked, .button:focus {
+    outline: none;
+}
+
+.button {
+    position: relative;
+    height: 3rem;
+    border-radius: 1.5rem;
+    background: transparent;
+    color: #ffffff;
+    transition: all 0.3s;
+}
+
+/*link:focus, :visited:focus {
+    outline: none;
+}*/
+
+/* Footer CSS*/
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #FF753A;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+
+/* Used for footer initially*/
+.bg-grey {
+    background-color: #FF753A;
+}
+
+/* Bootstrap designing*/
+.navbar {
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    z-index: 9999;
+    top: 0;
+    background-color: #FF753A;
+    transition: background-color 1s ease;
+    box-shadow: 0 8px 10px -5px rgba(0,0,0,0.2);
+
+}
+
+.nav-link {
+    color: white;
+    padding: 8px 12px; /* Vertical and horizontal padding */
+    text-decoration: none;
+    background-color: transparent; /* Transparent background by default */
+    border-radius: 4px; /* Rounded corners for the background */
+    transition: all 0.3s ease; /* Smooth transition for background and color changes */
+}
+
+    .navbar.scrolled {
+        background: #FF753A !important;
+        transition: background-color 0.6s !important;
+    }
+.navbar-scroll {
+    background: #FCFBF4 !important;
+    transition: background-color 0.6s;
+}
+
+.active{
+/*background-color: #fccb90;
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);*/
+    border-bottom:solid;
+    
+}
+
+.nav-link:hover, .nav-link:focus {
+    background-color: rgba(255, 255, 255, 0.2); /* Slight background on hover for visibility */
+    color: #fff; /* Keep text color white */
+    text-decoration: none; /* No underline on hover */
+}
+
+/* Active or current page link */
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.3); /* Slightly more visible background for active state */
+    color: #fff;
+}
+
+
+
+.navbar-font {
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+.navbar-nav li a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: black;
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: all 0.6s ease;
+}
+
+.navbar-nav li a::before {
+    bottom: 0px;
+    left: 0px;
+}
+.navbar-nav li a {
+    position: relative;
+    display: inline-block;
+}
+/*For the user logged in status*/
+
+
+.btn-user {
+    background-color: #ffa500; /* A shade of orange to match the header */
+    color: #fff;
+    font-weight: bold;
+}
+.btn-user:hover {
+    background-color: #e69500; /* A darker shade for hover */
+}
+
+
+
+
+.btn-secondary, .btn-outline-danger {
+    border: 1px solid #ffe5b4; /* Lighter border for a softer look */
+    background-color: #fffaf0; /* A light creamy color background */
+    color: #5a5a5a; /* A dark gray for text to ensure readability */
+}
+.btn-secondary:hover, .btn-outline-danger:hover {
+    border-color: #ffd27d; /* A hover border color slightly darker */
+    background-color: #ffe5b4; /* A light orange for hover */
+}
+
+.btn-outline-danger {
+    color: #d9534f;
+}
+.btn-outline-danger:hover {
+    color: #fff;
+    background-color: #d9534f;
+}
+.dropdown-menu {
+    border-radius: 0.25rem;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,.15);
+}
+
+.dropdown-item {
+    color: #5a5a5a;
+}
+
+    .dropdown-item:hover {
+        background-color: #ffe5b4; /* Light orange for hover */
+    }
+
+
+
+/*-----------------*/
+
+
+
+/*My Recipe and Cusinise*/
+.col-recipe-cuisine {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    flex-basis: calc(50% - 10px);
+}
+.col-cuisine {
+    background: white;
+    padding: 20px;
+    margin-left: 10px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    flex-basis: calc(50% - 10px);
+}
+
+.my-recipe-heading {
+    color: #333;
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-recipe-cuisine {
+    background-color: #808080;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-recipe-cuisine:hover {
+    background-color: #3e8e41;
+}
+
+.table-recipe-cuisine {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table-recipe-cuisine, th, td {
+    border: 1px solid #eaeaea;
+}
+
+.table-recipe-cuisine td, th {
+    text-align: left;
+    padding: 10px;
+}
+ .table-recipe-cuisine th {
+        background-color: #305973; /* Choose the color you like */
+        color: white;
+    }
+    .table-recipe-cuisine tr td {
+        background-color: #eef1ff;
+    }
+
+.styled-label {
+    margin-right: 5px;
+    padding: 5px 5px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.styled-label:hover {
+    background-color: #f0f0f0;
+            
+}
+
+
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-select {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.cuisine-tags{
+   text-decoration: none;
+    color: black;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+
+/*-------------------------*/
+.highlightedImage {
+    width: 309px;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.8);
+}
+
+.navbar-nav li a:hover::before {
+    transform: scaleX(1);
+}
+
+
+/* All the animation keyframes*/
+@keyframes panBackground {
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-26px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes textFocusIn {
+    from {
+        filter: blur(12px);
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        filter: blur(0);
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Media Queries*/
+@media (min-width: 768px) {
+    .gradient-form {
+        height: 100vh !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .gradient-custom-2 {
+        border-top-right-radius: .3rem;
+        border-bottom-right-radius: .3rem;
+    }
+}
+
+
+/* Media Queries */
+
+/* Tablets (landscape) */
+@media (max-width: 1024px) {
+    .cuisine-item {
+        width: 20%;
+        border: 2px solid #6caee0; /* Increase width for better spacing on smaller devices */
+    }
+}
+
+/* Tablets (portrait) */
+@media (max-width: 768px) {
+    .cuisine-item {
+        width: 30%;
+        border: 2px solid #5b9bd5; /* Slightly different color to adjust for smaller displays */
+        
+        /* Adjust width for medium-sized devices */
+    }
+}
+
+/* Large smartphones */
+@media (max-width: 600px) {
+    .cuisine-item {
+        width: 45%;
+        border: 1px solid #6caee0; /* Thinner border for small devices */
+         /* Adjusted margin */
+        border-radius: 8px; /* Adjust width for small devices to show two items per row */
+    }
+}
+
+/* Small smartphones */
+@media (max-width: 480px) {
+    .cuisine-item {
+        border: 1px solid #3498db; /* Change border color for visual distinction */
+        /* Adjusted margin for very small screens */
+        border-radius: 5px; /* More subtle rounded corners */
+        width: 90%; /* Center the buttons in the viewport */
+    }
+}
+
+
+@keyframes diagonalMove {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 100% 100%;
+    }
+}
+
+@keyframes pulseShadow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+    }
+
+    100% {
+        box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@keyframes borderColorAnimation {
+    0% {
+        border-color: #f0f0f0;
+    }
+
+    50% {
+        border-color: #e0a800; /* Choose a color that fits your design palette */
+    }
+
+    100% {
+        border-color: #f0f0f0;
+    }
+}
+/*login page css*/
+.login-form input[type=text], input[type=password]{
+    width: 400px;
+}
+/*chef-register css*/
+.chef-register-form input[type=text],
+input[type=email],input[type=password],input[type=date]
+{
+    width: 400px;
+}
+
+/*customer-register form*/
+.customer-register-form input[type=text],
+input[type=email], input[type=password] {
+    width: 400px;
+}
+/*add-recipe form css*/
+/* Styling the form */
+.add-recipe-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 530px;
+    margin: auto;
+    align-content:center;
+}
+
+    
+
+    /* Styling form rows */
+    .add-recipe-form .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    /* Form columns */
+    .add-recipe-form .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    /* Form group styling */
+    .add-recipe-form .form-group {
+        margin-bottom: 15px;
+    }
+
+    /* Label styling */
+    .add-recipe-form label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+        font-weight: bold;
+        
+    }
+
+    /* Input and select styling */
+    .add-recipe-form input[type="text"],
+    .add-recipe-form select.form-select,
+    .add-recipe-form input[type="number"],
+    .add-recipe-form input[type="file"] {
+        width: 150%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        
+    }
+
+    /* Button styling */
+    .add-recipe-form button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+
+        .add-recipe-form button:hover {
+            background-color: #0056b3;
+        }
+
+    /* File input styling */
+    .add-recipe-form input[type="file"] {
+        padding-top: 10px;
+       
+    }
+
+/* Error message styling */
+.text-danger {
+    color: #dc3545;
+}
+
+/* Image preview styling */
+#recipeImage {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 15px;
+    
+}
+
+/*css for recipe details image*/
+
+img#recipeImage {
+    width: 90%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.container-recipeDetails {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 530px;
+    margin: auto;
+    align-content: center;
+}
+.container-recipeDetails {
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+.container-recipeDetails .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: 20px 0;
+ }
+ .container-recipeDetails .row .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 15px;
+  }
+ .container-recipeDetails .row .col-md-6 h3 {
+        color: #444;
+        font-size: 60px;
+  }
+ .container-recipeDetails .row .col-md-6 p {
+        margin: 10px 0;
+ }
+ .container-recipeDetails .row .row .col .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+ }
+    /*css for register as a customer/register as a chef option*/
+    .register-container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        flex-basis: calc(50% - 10px);
+    }
+/*css for register AS A CHEF*/
+.btn-chef {
+    text-transform: uppercase;
+    outline: 0;
+    background: #FF753A !important;
+    /* White button background */
+    width: 250px;
+    border: 2px solid white; /* White border for the button */
+    padding: 15px;
+    color: black !important; /* Color of the button text matches the darker blue in the gradient */
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-decoration: none; /* Remove underline from anchor tags */
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+    .btn-chef:hover {
+        background: #305973 !important; /* Slightly grey background on hover for subtle effect */
+        color: white !important; /* Light blue text on hover to match the lighter blue in the gradient */
+        border-color: #f8f8f8; /* Border color changes on hover to match the hover background */
+    }
+
+/*css for register as a customer*/
+.btn-customer {
+    text-transform: uppercase;
+    outline: 0;
+    background: #FF753A !important;
+    width: 250px;
+    border: 2px solid white; /* White border for the button */
+    padding: 15px;
+    color: black; /* Color of the button text matches the darker blue in the gradient */
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-decoration: none; /* Remove underline from anchor tags */
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+    .btn-customer:hover {
+        background: #305973 !important; /* Slightly grey background on hover for subtle effect */
+        color: white; /* Light blue text on hover to match the lighter blue in the gradient */
+        border-color: #f8f8f8; /* Border color changes on hover to match the hover background */
+    }
+/*css for customer cart page*/
+.cart-container {
+    width: 80%;
+    margin: 0 auto;
+    max-height: 100vh; /* Ensure the container fits the viewport height */
+    overflow: hidden; /* Hide the overflow */
+}
+
+.cart-header h2 {
+    background-color: #f0f0f0;
+    padding: 5px; /* Further reduced padding */
+    border-radius: 5px;
+    font-size: 14px; /* Reduced font size */
+    margin-bottom: 5px; /* Reduced margin for spacing */
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 2px 0; /* Further reduced padding */
+}
+
+
+
+.product-name,
+.product-price,
+.quantity-selector,
+.quantity-selector button,
+.quantity-selector input,
+.cart-summary,
+.checkout button {
+    font-size: 12px; /* Further reduced font size for all elements */
+}
+
+.product-name {
+    margin-left: 5px; /* Adjusted margin */
+}
+
+.product-price {
+    font-weight: bold;
+    margin-right: 5px; /* Adjusted margin */
+}
+
+.quantity-selector {
+    margin-left: auto; /* Align to the right */
+}
+
+    .quantity-selector button {
+        width: 15px; /* Further reduced width */
+        height: 15px; /* Further reduced height */
+        padding: 0; /* Remove padding */
+        line-height: 15px; /* Adjust line height to match the height */
+    }
+
+    .quantity-selector input {
+        width: 30px; /* Further reduced width */
+    }
+
+.cart-summary {
+    padding: 5px 0; /* Further reduced padding */
+    align-items: center; /* Align summary items vertically */
+}
+
+.checkout button {
+    padding: 3px 10px; /* Further reduced padding */
+    border-radius: 3px; /* Adjusted border radius */
+}
+
+.cart-item-details .form-group .btn{
+    margin-top:10px;
+   
+}
+.cart-item-details .form-group select,
+.cart-item-details .form-group input[type=number]
+{
+    width: 60%;
+    margin-top:10px;
+}
+.cart-item-details .form-group input[type=date]{
+    width:60%;
+}
+.cart-item-details .form-group label,
+.cart-item-details .form-group .form-select,
+.cart-item-details .form-group .form-control {
+    display: inline-block; /* Make the label and input inline elements */
+    margin-right: 10px; /* Add some space between the elements */
+    vertical-align: middle; /* Align the elements vertically */
+    margin-top:10px;
+}
+
+/* Adjust widths as necessary to fit side-by-side */
+.cart-item-details .form-group label {
+    width: 30%; /* Adjust if necessary */
+    white-space: nowrap; /* Keeps the label in a single line */
+}
+.checkout-summary {
+    font-family: Arial, sans-serif; /* Modern, readable font */
+    color: #333; /* Dark grey for better readability */
+    max-width: 400px;
+    max-height:100%;/* Fixed width for consistency */
+    height:100%;
+    margin: 0 auto; /* Center the summary in its parent */
+    padding: 20px; /* Spacing around the content */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.6); /* Subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    margin-top:47px;
+}
+.cart-header h2 {
+     /* Theme color for headings */
+    text-align: center; /* Center-align headings */
+}
+.checkout-summary .card {
+    background-color: #f9f9f9; /* Light background for the card */
+    border: 1px solid #ddd; /* Light border for definition */
+    border-radius: 8px; /* Consistent rounded corners */
+    margin-top: 20px; /* Space above the card */
+}
+.card-header, .card-body {
+    padding: 15px; /* Padding for spacing within the card */
+}
+.card-body .row {
+        display: flex; /* Flexbox for alignment */
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start; /* Align items to the start (left) */
+        gap: 10px; /* Space between items */
+        padding: 10px; /* Padding inside the body */
+    }
+.card-body label {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+.checkout-btn {
+    background-color: #007bff; /* Theme color for button */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Button padding for larger click area */
+    color: #ffffff; /* White text color */
+    border-radius: 5px; /* Rounded corners for the button */
+    text-decoration: none; /* Remove underline from link */
+    display: inline-block; /* Allow width adjustment */
+    margin-top: 15px; /* Space above the button */
+    text-align: center; /* Center text within the button */
+}
+    .checkout-btn:hover {
+        background-color: #0056b3;
+    }
+/*css for customer checkout page*/
+.order-summary {
+    font-family: Arial, sans-serif; /* Modern, readable font */
+    color: #333; /* Dark grey for better readability */
+    max-width: 400px;
+    max-height: 100%; /* Fixed width for consistency */
+    height: 100%;
+    margin: 0 auto; /* Center the summary in its parent */
+    padding: 20px; /* Spacing around the content */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.6); /* Subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    
+}
+
+/*style for manage address page
+*/
+.address-container {
+    background-color: #fff;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+/* Header Styling */
+.address-header h2 {
+    background-color: whitesmoke;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    border-radius: 8px;
+    font-size: medium;
+    text-align: center;
+}
+
+/* Flexbox for Form Rows */
+.address-container .form-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+}
+
+.address-container .form-row .form-group {
+        /* Stack label over input */
+        margin-right: 50px;
+        margin-top: 0;
+        margin-bottom: 0;
+        flex: 1; /* Flex grow to fill available space */
+        min-width: 120px; /* Minimum width to prevent too much squeezing */
+    }
+
+.address-container .form-row .form-group input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+ }
+/*css for customer checkout page*/
+
+.customer-checkout-form .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center; /* Center cards horizontally */
+    padding: 15px;
+}
+
+    /* Address Card Style */
+    .customer-checkout-form .row .row .col-md-6 .card-address-home, .card-payment-home {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin: 10px; /* Spacing between cards */
+        width: calc(50% - 20px); /* Half width minus margin, adjust as needed */
+        cursor: pointer;
+        transition: box-shadow 0.3s;
+        width: 100%;
+    }
+
+    .customer-checkout-form .row .row .col-md-6 .card-address-home, .card-payment-home {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+        /* Card Body Style */
+        .customer-checkout-form .row .row .col-md-6 .card-address-home .card-body,
+        .customer-checkout-form .row .card-payment-home {
+            padding: 20px;
+        }
+
+            /* Form Group Style */
+            .customer-checkout-form .row .row .col-md-6 .card-address-home .card-body .form-group,
+            .customer-checkout-form .row .card-payment-home .form-group {
+                margin-bottom: 15px; /* Increase or decrease as needed for spacing */
+            }
+
+                /* Form Group Label and Input Style */
+                .customer-checkout-form .row .row .col-md-6 .card-address-home .card-body .form-group label,
+                .customer-checkout-form .row .card-payment-home .form-group label {
+                    display: block;
+                    cursor: pointer;
+                    margin-bottom: 5px;
+                }
+
+                /* Form Group Radio Button Style */
+                .customer-checkout-form .row .row .col-md-6 .card-address-home .card-body .form-group input[type=radio],
+                .customer-checkout-form .row .card-payment-home .form-group input[type="radio"] {
+                    margin-right: 10px;
+                }
+
+                /* Card Title Style */
+                .customer-checkout-form .row .row .col-md-6 .card-address-home .card-body .form-group .card-title,
+                .customer-checkout-form .row .card-payment-home .form-group .card-title {
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                    color: #333;
+                }
+
+                /* Card Text Style */
+                .customer-checkout-form .row .row .col-md-6 .card-address-home .card-body .form-group .card-text,
+                .customer-checkout-form .row .card-payment-home .form-group .card-text {
+                    color: #666;
+                    margin-bottom: 5px;
+                }
+/*chef my booking page css*/
+ .past-booking-table {
+
+        width: 100%;
+        border-collapse: collapse; /* Eliminates the space between borders */
+        margin-bottom: 20px;
+        
+    }
+
+    .upcoming-booking-table {
+        width: 100%;
+        border-collapse: collapse; /* Eliminates the space between borders */
+        margin-bottom: 20px;
+    }
+
+    .past-booking-table th, .past-booking-table td,.upcoming-booking-table th, .upcoming-booking-table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd; /* Adds a light line between rows */
+    }
+
+    /* Header styling */
+    .past-booking-table th, .upcoming-booking-table th {
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+    }
+
+    /* Row styling */
+    tr:nth-child(even) {
+        background-color: #f2f2f2; /* Zebra striping for rows */
+    }
+
+    /* Address cell styling */
+    .past-booking-table td:nth-child(6) p,.upcoming-booking-table td:nth-child(6) p {
+        margin: 0; /* Removes default paragraph margins */
+        padding: 2px; /* Adds padding within the address block */
+        line-height: 1.5; /* Adjusts line spacing for readability */
+    }
+
+    .past-booking-table td span.address,
+    .upcoming-booking-table td span.address{
+    display: inline; /* Makes sure the content is in one line */
+    white-space: nowrap; /* Prevents the text from wrapping */
+    overflow: hidden; /* Hides any overflow */
+    text-overflow: ellipsis; /* Adds an ellipsis if the content is too long */
+    max-width: 250px; /* Adjust the width as necessary */
+}
+/*code for admin view review page*/
+.btn-approve {
+    background-color: #28a745; /* Green color */
+}
+
+    .btn-approve:hover {
+        background-color: #218838;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+.btn-reject {
+    background-color: #dc3545;
+}
+
+.btn-reject:hover {
+        background-color: #c82333;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+ }
+.btn-approve, .btn-reject {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    transition: background-color 0.3s ease, box-shadow 0.2s ease;
+    color: #ffffff; /* White text color */
+    text-decoration: none;
+    margin: 5px; /* Remove underline from links styled as buttons */
+}
+.admin-review {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-review, .admin-review th, .admin-review td {
+        border: 1px solid #ddd;
+        text-align: left;
+
+}
+.admin-review th, .admin-review td {
+            padding: 5px;
+}
+.admin-review th {
+            background-color: #f2f2f2;
+}
+.admin-review tr:nth-child(even) {
+            background-color: #f9f9f9;
+}
+.admin-review tr:hover {
+        background-color: #e9e9e9; 
+}
+/*css for forget password page*/
+/* Styles for the card */
+.forget-password-card {
+    margin: auto; /* Helps in further centering and dealing with smaller screens */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds a slight shadow for depth */
+    width: 30%;
+}
+
+/* Green button style */
+.forget-password-btn-send {
+    background-color: #28a745; /* Bootstrap green */
+    border-color: #28a745;
+    color: white;
+}
+
+    .forget-password-btn-send:hover {
+        background-color: #218838; /* A shade darker for hover effect */
+        border-color: #1e7e34;
+        color: white;
+    }
+
+.forget-password-card .card-body form .row .col-6 {
+    padding-right: 5px; /* Adjust as needed */
+    padding-left: 5px; /* Adjust as needed */
+}
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

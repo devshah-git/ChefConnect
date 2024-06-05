@@ -1,0 +1,45 @@
+﻿@model ChefViewModel
+@{
+    ViewData["title"] = "Recipe-Details";
+}
+
+<div class="container-recipeDetails">
+    <div class="row">
+        <div class="col-md-6">
+            <img id="recipeImage" src="data:image/*;base64,@(Convert.ToBase64String(Model.ActiveChefRecipe.RecipeImage))">
+        </div>
+        <div class="col-md-6">
+            <h3>
+                @Model.ActiveChefRecipe.RecipeName
+            </h3>
+            <p>
+                @Model.ActiveChefRecipe.RecipeDescription
+            </p>
+            <p>
+                Cuisine: @Model.ActiveChefRecipe.RecipeCuisine.CuisineName
+            </p>
+            <p>
+                Number of Persons: @Model.ActiveChefRecipe.NumberOfPeople
+            </p>
+            <p>
+                Price: $@Model.ActiveChefRecipe.Price
+            </p>
+            <p>
+                Price per Extra Person: $@Model.ActiveChefRecipe.PricePerExtraPerson
+            </p>
+            @if(Model.ActiveUser.Id == Model.ActiveChefRecipe.Chef.Id){
+                <div class="row">
+                    <div class="col">
+                        <a class="btn btn-primary" asp-controller="chef" asp-action="GetEditRecipesPage" asp-route-username="@Model.ActiveUser.UserName" asp-route-id="@Model.ActiveChefRecipe.ChefRecipesId">Edit Recipe</a>
+                    </div>
+                    <div class="col">
+                        <a class="btn btn-danger" asp-controller="chef" asp-action="DeleteChefRecipe" asp-route-id="@Model.ActiveChefRecipe.ChefRecipesId">Delete Recipe</a>
+                    </div>
+                </div>
+            }
+
+            
+        </div>
+    </div>
+
+</div>

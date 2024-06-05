@@ -1,0 +1,45 @@
+﻿@model CustomerViewModel
+
+@{
+    ViewData["title"] = "Add-Review";
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Add Review</h2>
+            <form asp-controller="Customer" asp-action="AddChefReview" method="post">
+                <div class="text-danger" asp-validation-summary="ModelOnly">   </div>
+                <input type="hidden" asp-for="@Model.NewReview.ChefId" value="@Model.ActiveRecipe.ChefId" />
+                <input type="hidden" asp-for="@Model.NewReview.CustomerId" value="@Model.ActiveUser.Id" />
+                <input type="hidden" asp-for="@Model.NewReview.chefRecipeId" value="@Model.ActiveRecipe.ChefRecipesId" />
+                <div class="form-group">
+                    <label asp-for="@Model.NewReview.ReviewDescription"> Review Description:</label>
+                    <textarea asp-for="@Model.NewReview.ReviewDescription" class="form-control" rows="4" cols="50"></textarea>
+                    <span asp-validation-for="@Model.NewReview.ReviewDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.NewReview.Ratings"> Review Ratings:</label>
+                    <input asp-for="@Model.NewReview.Ratings" class="form-control" />
+                    <span asp-validation-for="@Model.NewReview.Ratings" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary">Save Review</button>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-danger" asp-controller="Customer" asp-action="GetPastOrders" asp-route-username="@Model.ActiveUser.UserName">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

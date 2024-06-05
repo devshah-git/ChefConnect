@@ -1,0 +1,88 @@
+﻿@model ChefViewModel
+
+@{
+    ViewData["title"] = "My-Recipes-And-Cuisines";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-recipe-cuisine">
+            <h2 class="my-recipe-heading">My Recipes</h2>
+            <a type="button" class="btn btn-primary" asp-controller="Chef" asp-action="GetAddRecipesPage" asp-route-username="@Model.ActiveUser.UserName">Add New Recipe</a>
+            @if (Model.chefRecipes.Count == 0)
+            {
+                <h4>No Recipes Found.</h4>
+            }
+            else
+            {
+                <table class="table-recipe-cuisine table table-striped-columns">
+
+                    <thead>
+                        <tr>
+                            <th>Recipe</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var recipe in Model.chefRecipes)
+                        {
+                            <tr>
+                                <td>
+                                    @recipe.RecipeName
+                                </td>   
+                                <td>
+                                    $@recipe.Price
+                                </td>
+                                <td>
+                                    <a type="button" asp-controller="chef" asp-action="GetRecipeDetailsPage" asp-route-id="@recipe.ChefRecipesId" asp-route-username="@Model.ActiveUser.UserName" class="btn btn-primary btn-recipe-cuisine">View</a>
+                                </td>
+
+                            </tr>
+
+                        }
+
+                    </tbody>
+
+                </table>
+            }
+        </div>
+        <div class="col-cuisine">
+            <h2>My Cuisines</h2>
+            <div class="form-group">
+                @foreach (var item in Model.chefCuisines)
+                {
+
+                    <a asp-controller="Chef" asp-action="RemoveCuisineFromChefProfile" style=" border: 1px solid black" class="cuisine-tags styled-label" asp-route-chefid="@item.ChefId" asp-route-cuisineid="@item.CuisineId">
+                        @item.Cuisine.CuisineName &#x274c
+                    </a>
+
+
+
+                }
+            </div>
+
+            <form asp-controller="Chef" asp-action="AddCuisineForChefProfile" method="post">
+                <input type="hidden" asp-for="@Model.NewChefCuisine.ChefId" value="@Model.ActiveUser.Id" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                
+                <div class="form-group">
+                    <label asp-for="@Model.NewChefCuisine.CuisineId">Recipe Cuisine:</label>
+                    <select class="form-select" asp-for="@Model.NewChefCuisine.CuisineId">
+                        @foreach (var cuisine in Model.allCuisines)
+                        {
+                            <option value="@cuisine.CuisinesId">
+                                @cuisine.CuisineName
+                            </option>
+                        }
+                    </select>
+                    <span class="text-danger">@TempData["error"]</span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="margin-top:10px">Add Cuisine</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿@model PaymentViewModel
+@{
+    ViewData["title"] = "Add Payment Method";
+}
+<style>
+    .btn-no-wrap {
+        white-space: nowrap; /* Prevents the text inside the button from wrapping */
+        overflow: hidden; /* Ensures the text doesn't spill outside the button */
+        text-overflow: ellipsis; /* Adds an ellipsis if the text is too long */
+    }
+</style>
+<section>
+    <div class="cart-header">
+        <h2>Payment Information</h2>
+    </div>
+    <div class="cart-container">
+        <div class="cart-items pb-3">
+            <div class="cart-item">
+
+                <div class="row">
+                    <form asp-controller="Customer" asp-action="AddCustomerPaymentMethod" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="@Model.ReturnUrl" value="@TempData["returnurl"]" />
+                        <div class="form-group">
+                            <label asp-for="@Model.PaymentType">Payment Type:</label>
+                            <select class="form-select" asp-for="@Model.PaymentType">
+                                <option value="" default></option>
+                                <option value="CreditCard">Credit Card</option>
+                                <option value="DebitCard">Debit Card</option>
+                            </select>
+                            <span asp-validation-for="@Model.PaymentType"
+                                  class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.CardNumber">Card Number:</label>
+                            <input type="text" asp-for="@Model.CardNumber" />
+                            <span asp-validation-for="@Model.CardNumber"
+                                  class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.CardExpiry">Expiry Date:</label>
+                            <input type="month" asp-for="@Model.CardExpiry" min="@DateTime.Now.ToString("yyyy-MM")" value="@DateTime.Now.ToString("yyyy-MM")"/>
+                            <span asp-validation-for="@Model.CardExpiry"
+                                  class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.CardCvv">CVV:</label>
+                            <input type="text" asp-for="@Model.CardCvv" />
+                            <span asp-validation-for="@Model.CardCvv"
+                                  class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.NameOnCard">Card Holder Name:</label>
+                            <input type="text" asp-for="@Model.NameOnCard" />
+                            <span asp-validation-for="@Model.NameOnCard"
+                                  class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <button type="submit" class="btn btn-primary btn-no-wrap">Save Payment</button>
+                                </div>
+                                @if(Model.ReturnUrl == "managepayment")
+                                {
+                                    <div class="col-md-5">
+                                        <a class="btn btn-danger" asp-controller="Customer" asp-action="GetManagePaymentMethods" asp-route-username="@Model.Username">Cancel</a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-5">
+                                        <a class="btn btn-danger" asp-controller="Customer" asp-action="GetSecureCheckoutPage" asp-route-username="@Model.Username">Cancel</a>
+                                    </div>
+                                }
+                                
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

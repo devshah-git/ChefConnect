@@ -1,0 +1,84 @@
+﻿@model CustomerViewModel
+
+@{
+    ViewData["title"] = "Cart";
+
+}
+<div class="row">
+    <div class="col-md-8">
+        <h2>Cart Items: @Model.cartList.Count</h2>
+        <span class="text-danger">@TempData["carterror"]</span>
+        @foreach (var item in Model.cartList)
+        {
+            <div class="cart-header">
+                <h2>Recipe: @item.ChefRecipe.RecipeName</h2>
+            </div>
+            <div class="cart-container">
+                <div class="cart-items pb-3">
+                    <div class="cart-item">
+
+                        <div class="row">
+                            <div class="cart-item-details pl-3 col-md-8">
+                                <form asp-controller="Customer" asp-action="UpdateCartPage" method="post">
+                                    <input type="hidden" name="itemId" value="@item.UserCartItemId" />
+
+
+                                    <div class="form-group">
+                                        <p>Price: $@item.ChefRecipe.Price</p>
+                                        <p>Number of people Included: @item.ChefRecipe.NumberOfPeople</p>
+
+                                        <label class="pb-3" for="timeSlot" asp-for="@item.TimeSlotId">Select TimeSlot:</label>
+                                        <select class="form-select" id="timeSlot" name="timeSlotId" asp-for="@item.TimeSlotId">
+                                            @foreach (var ts in Model.TimeSlots)
+                                            {
+                                                <option value="@ts.TimeSlotsId">
+                                                    @DateTime.Today.Add(ts.TimeSlot).ToString("hh:mm tt")
+                                                </option>
+                                            }
+                                        </select>
+                                        <label class="pb-3" for="OrderDate" asp-for="@item.OrderDate">Date:</label>
+                                        @*<input type="date" class="form-control" asp-for="@item.OrderDate" id="OrderDate" name="OrderDate" min="@DateTime.Now.AddDays(2).ToString("yyyy-MM-dd")"/>*@
+                                        <input type="date" class="form-control" asp-for="@item.OrderDate" id="OrderDate" name="OrderDate" required/>
+                                        <label class="pb-3" for="GuestQuantity" asp-for="@item.GuestQuantity">Extra People:</label>
+                                        <input class="form-control" asp-for="@item.GuestQuantity" id="GuestQuantity" name="GuestQuantity" value="0" min="0" max="20" required/>
+
+
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <a asp-controller="Customer" asp-action="RemoveItemFromCart" class="btn btn-danger" asp-route-id="@item.UserCartItemId">Remove</a>
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div class="cart-img col-md-3">
+                                <img src="data:image/*;base64,@(Convert.ToBase64String(item.ChefRecipe.RecipeImage))" style="width:160%;height:90%;" alt="@item.ChefRecipe.RecipeName">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        }
+    </div>
+    <div class="col-md-3 checkout-summary">
+        <h1>Cart Summary</h1>
+        <div class="card">
+            
+            <div class="card-body">
+                <div class="row">
+                    @foreach (var item in Model.cartList)
+                    {
+                        @if (item.RecipeTotal != null)
+                        {
+                            <label>@item.ChefRecipe.RecipeName <span class="">$@item.RecipeTotal</span></label>
+                        }
+                    }
+                    <label style="border-top:1px solid black">Sub Total: <span class="">$@Model.cartList.Sum(x => x.RecipeTotal)</span></label>
+                    @*<label>Tax(13% Tax) <span class="">$ (@Model.cartList.Sum(x => x.RecipeTotal) * 0.13)</span></label>*@
+                    <a asp-controller="Customer" asp-action="GetSecureCheckoutPage" asp-route-username="@Model.ActiveUser.UserName" class="btn btn-primary checkout-btn">Proceed to Checkout</a>
+                    <a asp-controller="Customer" asp-action="GetCustomerHome" asp-route-username="@Model.ActiveUser.UserName" class="btn btn-primary checkout-btn">Add more Recipes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

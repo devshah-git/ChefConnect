@@ -1,0 +1,108 @@
+﻿@model CustomerViewModel
+
+@{
+    ViewData["title"] = "Orders";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <a asp-contorller="Customer" asp-action="GetPastOrders" asp-route-username="@Model.ActiveUser.UserName" class="btn btn-primary">Show Past Orders</a>
+    </div>
+    <div class="col-md-6">
+        <a asp-contorller="Customer" asp-action="GetUpcomingOrders" asp-route-username="@Model.ActiveUser.UserName" class="btn btn-primary">Show Upcoming Orders</a>
+    </div>
+</div>
+<div class="row" style="margin-top:20px;">
+    @if (Model.PastOrders.Count > 0)
+    {
+        <table class="past-booking-table">
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Order Recipe</th>
+                    <th>Chef Name</th>
+                    <th>Order Date</th>
+                    <th>Order Timeslot</th>
+                    <th>Address</th>
+                    <th>Guest Quantity</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var booking in Model.PastOrders)
+                {
+                    <tr>
+                        <td>@booking.OrderDetails.Customer.Name</td>
+                        <td>@booking.ChefRecipes.RecipeName</td>
+                        <td>@booking.ChefRecipes.Chef.Name</td>
+                        <td>@booking.OrderDate.ToString("dd-MM-yyyy")</td>
+                        <td>@DateTime.Today.Add(booking.TimeSlot.TimeSlot).ToString("hh:mm tt")</td>
+                        <td>
+                            <span>
+                                @booking.OrderDetails.Address.AptNumber,
+                                @booking.OrderDetails.Address.StreetAddress,
+                                @booking.OrderDetails.Address.City,
+                                @booking.OrderDetails.Address.Province,
+                                @booking.OrderDetails.Address.Country,
+                                @booking.OrderDetails.Address.PostalCode
+                            </span>
+                        </td>
+                        <td>@(booking.GuestQuantity + booking.ChefRecipes.NumberOfPeople)</td>
+                        <td>$@booking.RecipeTotal</td>
+                        <td><a asp-controller="Customer" asp-action="GetReviewsPage" asp-route-id="@booking.ChefRecipes.ChefRecipesId" asp-route-username="@Model.ActiveUser.UserName" class="btn button-cart btn-primary">Add Review</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    @if (Model.UpComingOrders.Count > 0)
+    {
+        <table class="upcoming-booking-table">
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Order Recipe</th>
+                    <th>Chef Name</th>
+                    <th>Order Date</th>
+                    <th>Order Timeslot</th>
+                    <th>Address</th>
+                    <th>Guest Quantity</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var booking in Model.UpComingOrders)
+                {
+                    <tr>
+                        <td>@booking.OrderDetails.Customer.Name</td>
+                        <td>@booking.ChefRecipes.RecipeName</td>
+                        <td>@booking.ChefRecipes.Chef.Name</td>
+                        <td>@booking.OrderDate.ToString("dd-MM-yyyy")</td>
+                        <td>@DateTime.Today.Add(booking.TimeSlot.TimeSlot).ToString("hh:mm tt")</td>
+                        <td>
+                            <span>
+                                @booking.OrderDetails.Address.AptNumber,
+                                @booking.OrderDetails.Address.StreetAddress,
+                                @booking.OrderDetails.Address.City,
+                                @booking.OrderDetails.Address.Province,
+                                @booking.OrderDetails.Address.Country,
+                                @booking.OrderDetails.Address.PostalCode
+                            </span>
+                        </td>
+                        <td>@(booking.GuestQuantity + booking.ChefRecipes.NumberOfPeople)</td>
+                        <td>$@booking.RecipeTotal</td>
+                        <td>
+                            @if (booking.OrderDate > DateTime.Now.AddDays(1))
+                            {
+                                <a asp-contorller="Customer" asp-action="CancelUpcomingBooking" asp-route-orderid="@booking.OrderDetailsId" asp-route-recipeid="@booking.ChefRecipesId" class="btn btn-danger">Cancel</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+</div>

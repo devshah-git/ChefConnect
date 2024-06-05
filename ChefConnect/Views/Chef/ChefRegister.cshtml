@@ -1,0 +1,102 @@
+﻿@model RegisterChefViewModel
+@{
+
+    ViewData["title"] = "Chef Registration";
+
+}
+
+
+    <section class="h-100 gradient-form" style="padding-bottom:25px;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-10">
+                    <div class="card rounded-3 text-black">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="card-body p-md-5 mx-md-4">
+
+                                    <div class="text-center">
+                                        <img src="/images/logo.png"
+                                             style="width: 185px;" alt="logo">
+                                        <h4 class="mt-1 mb-5 pb-1">Register as a Chef</h4>
+                                    </div>
+
+                                    <form method="post" asp-controller="Chef" asp-action="ChefRegister" class="chef-register-form">
+
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label">Username</label>
+                                            <input type="text" class="form-control" asp-for="UserName" />
+                                            <span asp-validation-for="UserName"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label">Name</label>
+                                            <input type="text" class="form-control" asp-for="Name"
+                                                   placeholder="Enter Full Name" />
+                                            <span asp-validation-for="Name"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label">Email</label>
+                                            <input type="email" class="form-control" asp-for="Email" />
+                                            <span asp-validation-for="Email"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label">Date Of Birth</label>
+                                            <input type="date" class="form-control" asp-for="DateOfBirth" />
+                                            <span asp-validation-for="DateOfBirth"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label">Phone Number</label>
+                                            <input type="text" class="form-control" asp-for="PhoneNumber"
+                                                   placeholder="1234567890" />
+                                            <span asp-validation-for="PhoneNumber"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label">Password</label>
+                                            <input type="password" class="form-control" asp-for="Password" />
+                                            <span asp-validation-for="Password"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label">Confirm Password</label>
+                                            <input type="password" class="form-control" asp-for="ConfirmPassword" />
+                                            <span asp-validation-for="ConfirmPassword"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="text-center pt-1 mb-5 pb-1">
+                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" style="background-color:#347474">
+                                                Register
+                                            </button>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+                        <div class="col-lg-6 d-flex align-items-center gradient-custom-2" style="background-color:#305973">
+                                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                    <h4 class="mb-4">We are more than just a company</h4>
+                                    <p class="small mb-0">
+                                    Chef Connect: Where Passion Meets the Plate. Unite with Culinary Masters from Around the Globe. Discover, Learn, and Share the Joy of Cooking, One Recipe at a Time.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
